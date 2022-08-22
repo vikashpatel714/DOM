@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document Object Model</title>
+    <link rel="stylesheet" href="./index.css" />
+</head>
+<style>
+    body{
+        background-color: rgb(163, 203, 122);
+    }
+    h2{
+        background-color: aqua;
+    }
+</style>
+
+<body>
+    <h2>Que1-Write the code to access element which is having id as "text"</h2>
+    <p>const text = document.getElementById("text");</p><br>
+    <h2>Que2-Write the code to access element which is having tag as "h1"</h2>
+    <p>const tag = document.getElementsByTagName("h1");</p><br>
+
+    <h2>Que3-Write the code to access element which is having class as "box"</h2>
+    <p>const class = document.getElementsByClassName("box");</p>
+    <h2>Que4-"Hello"
+        Change the heading from ""Hello"" to ""Hello World"" using DOM functions"</h2>
+    <h1 id="one">Hello</h1>
+    <p>document.getElementsByTagName(" h1").innerHTML="Hello World" ;</p>
+        <script>
+            const hello = document.getElementById("one");
+            hello.addEventListener('mouseover', function handleMouseOver() {
+                document.getElementById("one").innerHTML = "Hello World";
+            });
+           
+        </script>
+        <h2>Que5- Create three cards on HTML page and arrange them using flex property in
+            row or horizontal direction and also create button at the bottom named
+            "Change Flex direction". When user clicks on this button, the cards
+            arrangement should be changed to vertical direction.</h2>
+        <div id="box1">
+            <div style="background-color:rgb(20, 248, 81);">first</div>
+            <div style="background-color:rgb(242, 17, 24);">second</div>
+            <div style="background-color:rgb(226, 246, 16);">third</div>
+        </div>
+        <button onclick="changeDirection()">Click Here</button><br>
+        <pre>function changeDirection() {
+            document.getElementById("box1").style.flexDirection = "column";
+          }</pre>
+
+        <h2>Que6-What is the difference between window vs document?</h2>
+        <b>Window: </b>It is the root object of all the objects in the javascript. This is called as a global object.
+      <pre>It is the root level element in any web page.
+        All the global variables are defined on the window object.
+        For example, alert(), confirm() are methods defined on the window object.
+        Writing alert() is similar to window.alert()
+        Also, properties like document, location are properties of the window object.
+        window API</pre>  
+        <b>Document:</b> Document is object like html, php etc which gets parsed inside the global object.
+        we can access document properties by using window.document.property or just by using document.property
+       <pre>It is the direct child of the window object. It is aka Document Object Model (DOM).
+        You can access it via window.document or document.
+        document object has many useful methods defined on it.
+        For example, document.getElementById(), document.getElementByTagName(), document.createElement(), document.querySelector() and many more
+        document API</pre>
+        <h2>Que 7- "Hello" Add one style attribute and give text color as red and id attribute and give the id value as ""heading"" in the above given h1 tag using DOM functions" -->
+        </h2>
+        <h1 id="heading">Hello</h1>
+       <pre> const heading = document.getElementById("heading");
+        heading.addEventListener("mouseover", function handleMouseOver() {
+          heading.style.color = "green";
+        });
+        heading.addEventListener("mouseout", function handleMouseOut() {
+          heading.style.color = "red";
+        });</pre>
+  <h2>Que8-Create an HTML page having content as Hello world and a button named Replace Text. When user will click on this button page content should be changed to "Welcome to Elevation academy".</h2>
+        <h1 id="content">Hello World</h1>
+        <button id="replaceBtn" onclick="replaceText()">Replace Text</button>
+  <pre>  const content = document.getElementById("content");
+    function replaceText() {
+      content.innerHTML = "Welcome to Elevation academy";
+    }</pre>
+
+
+        <h2>Que9-Write code to implement timer clock using JS -- display HH:MM:SS -- the time should keep updating every second</h2>
+        <div class="container">
+            <div class="timer">
+                <span class="duration">
+                    <span id="clock-hours" class="count">10</span>
+                    <span class="unit">HH</span>
+                </span>
+                <div class="timer__separator__dots">
+                    <span class="dots"></span>
+                    <span class="dots"></span>
+                </div>
+                <span class="duration">
+                    <span id="clock-minutes" class="count">00</span>
+                    <span class="unit">MM</span>
+                </span>
+                <div class="timer__separator__dots">
+                    <span class="dots"></span>
+                    <span class="dots"></span>
+                </div>
+                <span class="duration">
+                    <span id="clock-seconds" class="count">01</span>
+                    <span class="unit">SS</span>
+                </span>
+                <span id="clock-period" class="period"> AM </span>
+                <img src="" alt="" />
+            </div>
+            <pre>  let clock = () => {
+                let date = new Date();
+                let hours = date.getHours();
+                let minutes = date.getMinutes();
+                let seconds = date.getSeconds();
+              
+                let period = "AM";
+                if (hours === 0) {
+                  hours = 12;
+                } else if (hours >= 12) {
+                  hours -= 12;
+                  period = "PM";
+                }
+              
+                hours = hours < 10 ? `0${hours}` : hours;
+                minutes = minutes < 10 ? `0${minutes}` : minutes;
+                seconds = seconds < 10 ? `0${seconds}` : seconds;
+              
+                let clockHours = `${hours}`;
+                let clockMinutes = `${minutes}`;
+                let clockSeconds = `${seconds}`;
+                let clockPeriod = `${period}`;
+              
+                document.getElementById("clock-hours").innerHTML = clockHours;
+                document.getElementById("clock-minutes").innerHTML = clockMinutes;
+                document.getElementById("clock-seconds").innerHTML = clockSeconds;
+                document.getElementById("clock-period").innerHTML = clockPeriod;
+                setTimeout(clock, 1000);
+              };
+              
+              clock();</pre>
+        </div>
+        <br>
+        <h2>10-Create a select drop down for selecting Year 20-21, 21-22 etc. Print the item text selected</h2>
+        <div>
+                <select name="year" id="year">Year
+                <option value="20-21">20-21</option>
+                <option value="21-22">21-22</option>
+                <option value="2016-17">2016-17</option>
+                <option value="2017-18">2017-18</option>
+                <option value="2018=19">2018-19</option>
+                <option value="2019-20">2019-20</option>
+                <option value="2020-21">2020-21</option>
+                <option value="2021-22">2021-22</option>
+                <option value="2022-23">2022-23</option>
+                <option value="2023-24">2023-24</option>
+                <option value="2024-25">2024-25</option>
+            </select> </label>
+            </select>
+        </div> <br>
+        <button id="showYear" onclick="displayYear()">Select Year</button> <br>
+        <p id="displayYear"></p> <br>
+        <pre> const displayYear = () => {
+            let selectedYear = document.getElementById("year");
+            let year = null;
+            selectedYear.addEventListener("change", function handleChange(event) {
+              year = selectedYear.options[selectedYear.selectedIndex].value;
+            });
+          
+            let showYear = document.getElementById("showYear");
+            showYear.addEventListener("click", function handleChange(event) {
+              document.getElementById("displayYear").innerHTML = year;
+            });
+          };</pre>
+
+        <h2>Que11-"Create a form having name ,email, phone no. , birth year
+            Add validations - phone no. should start with 91 , it should be 10 digits email should be domain
+            prepbytes.com
+            birth year should be > 95"</h2>
+        <form name="form">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name"> <br><br>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email"> <br><br>
+            <label for="phone">Phone Num:</label>
+            <input type="text" id="phone" name="phone"> <br><br>
+            <label for="year">DoB:</label>
+            <input type="number" id="year" name="year"> <br><br>
+            <input type="submit" value="Submit" onclick="validateForm()">
+        </form>
+        <pre>
+             
+  function validatePhone(input) {
+    let phonePattern = /^\(?(\d{91})\)?[- ]?(\d{3})[- ]?(\d{4})$/;
+    return phonePattern.test(input);
+  }
+  function validateForm(event) {
+    let phone = document.getElementById("phone").value;
+    let phoneValue = phone.startsWith("91");
+    if (phoneValue === false || phone.length !== 10) {
+      alert("Please Number must start with 91 with length of 10");
+    }
+    let email = document.getElementById("email").value;
+    if (!/@prepbytes.com\s*$/.test(email)) {
+      alert("email domain must be @prepbytes.com");
+    }
+    let year = document.getElementById("year").value;
+    if (year <= 1995 || year == null) {
+      alert("Birth Year must be after 1995.");
+    }
+  }
+  document.getElementById("myform").addEventListener("submit", validateForm);
+        </pre>
+
+        <script src="./index.js"></script>
+
+</html>
